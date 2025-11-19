@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SmartGadget Pro - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ========== Global Styles ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f9fafc;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ========== Navigation Bar ========== */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #111827;
+  color: #fff;
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #00b4d8;
+}
+
+/* Navigation links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: #00b4d8;
+}
+
+/* Hamburger menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  transition: 0.3s;
+}
+
+/* Responsive Navigation */
+#menu-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: #111827;
+    flex-direction: column;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+
+  #menu-toggle:checked ~ .nav-links {
+    max-height: 300px;
+  }
+
+  .nav-links li {
+    text-align: center;
+    padding: 15px 0;
+  }
+}
+
+/* ========== Hero Section ========== */
+.hero {
+  background: linear-gradient(to right, #00b4d8, #0077b6);
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero-content h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+}
+
+.btn-primary {
+  display: inline-block;
+  background-color: #fff;
+  color: #0077b6;
+  padding: 10px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #e0f7ff;
+}
+
+/* ========== Features Section ========== */
+.features-section {
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.features-section h2 {
+  font-size: 2rem;
+  color: #0077b6;
+  margin-bottom: 40px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  justify-content: center;
+}
+
+.feature-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.feature-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.feature-card h3 {
+  color: #00b4d8;
+  margin-bottom: 10px;
+}
+
+/* ========== Pricing Section ========== */
+.pricing-section {
+  background-color: #f0f9ff;
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.pricing-section h2 {
+  color: #0077b6;
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  justify-content: center;
+}
+
+.price-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 30px;
+  transition: transform 0.3s;
+}
+
+.price-card:hover {
+  transform: translateY(-10px);
+}
+
+.price-card.featured {
+  border: 2px solid #00b4d8;
+  transform: scale(1.05);
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0077b6;
+  margin: 15px 0;
+}
+
+.price-card ul {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.price-card ul li {
+  margin: 10px 0;
+  color: #555;
+}
+
+.btn-secondary {
+  display: inline-block;
+  background-color: #0077b6;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: #023e8a;
+}
+
+/* ========== Footer ========== */
+footer {
+  background-color: #111827;
+  color: #ccc;
+  text-align: center;
+  padding: 25px 10px;
+  font-size: 0.9rem;
+}
+
+footer p {
+  margin: 5px 0;
+}
+
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <input type="checkbox" id="menu-toggle" />
+    <label for="menu-toggle" class="hamburger">
+      <span></span><span></span><span></span>
+    </label>
+    <div class="logo">SmartGadget</div>
+    <ul class="nav-links">
+      <li><a href="#main" class="active">Home</a></li>
+      <li><a href="#features">About Us</a></li>
+      <li><a href="#footer">Contact</a></li>
+      <li><a href="admin_login.html">Admin</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero" id="main" style="background-image: url('https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=1400&q=80'); background-size: cover; background-position: center;">
+    <div class="hero-content">
+      <h1>Meet SmartGadget Pro</h1>
+      <p>The ultimate smart gadget that transforms your digital experience.</p>
+      <a href="#features" class="btn-primary">Explore Features</a>
+    </div>
+  </header>
+
+  <!-- Features Section -->
+  <section id="features" class="features-section">
+    <h2>Features That Impress</h2>
+    <div class="features-grid">
+      <article class="feature-card">
+        <img src="watch.jpeg" alt="Fast Performance" />
+        <h3>Fast Performance</h3>
+        <p>Powered by a next-gen processor for lightning-fast performance, ensuring zero lag and seamless multitasking.</p>
+      </article>
+      <article class="feature-card">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Battery Life" />
+        <h3>Long Battery</h3>
+        <p>Enjoy up to 24 hours of continuous usage on a single charge — designed for all-day productivity and fun.</p>
+      </article>
+      <article class="feature-card">
+        <img src="praveenimg.jpeg" alt="Sleek Design" />
+        <h3>Elegant Design</h3>
+        <p>Compact, lightweight, and stylish — crafted with premium materials to fit perfectly in your hand or pocket.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="pricing-section">
+    <h2>Choose Your Plan</h2>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <img src="https://images.unsplash.com/photo-1620207418302-439b387441b0?auto=format&fit=crop&w=600&q=80" alt="Basic Plan" style="width:100%; border-radius:10px; margin-bottom:15px;">
+        <h3>Basic</h3>
+        <p class="price">$49.99</p>
+        <ul>
+          <li>Essential Features</li>
+          <li>1 Year Warranty</li>
+          <li>Email Support</li>
+        </ul>
+        <a href="contact.html" class="btn-secondary">Buy Now</a>
+      </div>
+      <div class="price-card featured">
+        <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=600&q=80" alt="Pro Plan" style="width:100%; border-radius:10px; margin-bottom:15px;">
+        <h3>Pro</h3>
+        <p class="price">$89.99</p>
+        <ul>
+          <li>All Features</li>
+          <li>2 Years Warranty</li>
+          <li>Priority Support</li>
+        </ul>
+        <a href="contact.html" class="btn-secondary">Buy Now</a>
+      </div>
+      <div class="price-card">
+        <img src="praveenimg2.webp" alt="Elite Plan" style="width:100%; border-radius:10px; margin-bottom:15px;">
+        <h3>Elite</h3>
+        <p class="price">$149.99</p>
+        <ul>
+          <li>Everything in Pro</li>
+          <li>Bonus Accessories</li>
+          <li>Dedicated Support</li>
+        </ul>
+        <a href="contact.html" class="btn-secondary">Buy Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <p>&copy; 2025 SmartGadget Inc. All rights reserved.</p>
+    <p>Email: support@smartgadget.com | Phone: +1 234 567 8900</p>
+  </footer>
+</body>
+</html>

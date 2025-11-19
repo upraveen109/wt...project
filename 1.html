@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #222;
+  background-color: #f8f9fc;
+  line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.logo span { color: #0077ff; }
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: 0.3s;
+}
+.nav-links a:hover,
+.nav-links .active {
+  color: #0077ff;
+}
+
+/* Hamburger for mobile */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+.hamburger span {
+  height: 3px;
+  width: 25px;
+  background: #333;
+  margin: 4px 0;
+}
+#menu-toggle { display: none; }
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: -100%;
+    flex-direction: column;
+    background: #fff;
+    width: 200px;
+    transition: 0.4s;
+  }
+  #menu-toggle:checked + .hamburger + .nav-links {
+    right: 5%;
+  }
+  .hamburger { display: flex; }
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 5%;
+  background: linear-gradient(135deg, #0077ff, #00d4ff);
+  color: #fff;
+}
+.hero-content {
+  flex: 1;
+  animation: fadeInLeft 1s ease-in;
+}
+.hero-content h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+.hero-content span { color: #ffea00; }
+.hero-content p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+.hero-img {
+  flex: 1;
+  text-align: right;
+}
+.hero-img img {
+  width: 85%;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  animation: fadeInRight 1.2s ease-in;
+}
+
+/* Buttons */
+.btn-primary, .btn-secondary {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.btn-primary {
+  background: #fff;
+  color: #0077ff;
+}
+.btn-primary:hover {
+  background: #0077ff;
+  color: #fff;
+}
+.btn-secondary {
+  background: transparent;
+  color: #0077ff;
+  border: 2px solid #0077ff;
+}
+.btn-secondary:hover {
+  background: #0077ff;
+  color: #fff;
+}
+
+/* Features */
+.features-section {
+  text-align: center;
+  padding: 3rem 5%;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.feature-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  transition: transform 0.3s;
+}
+.feature-card:hover {
+  transform: translateY(-10px);
+}
+.feature-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+/* Pricing */
+.pricing-section {
+  background: #eef5ff;
+  text-align: center;
+  padding: 3rem 5%;
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.price-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.price-card.featured {
+  border: 2px solid #0077ff;
+  transform: scale(1.05);
+}
+
+/* Reviews */
+.reviews-section {
+  text-align: center;
+  padding: 3rem 5%;
+}
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.review-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.review-card img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+/* Contact */
+.contact-section {
+  background: #fff;
+  text-align: center;
+  padding: 3rem 5%;
+}
+.contact-section form {
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+input, textarea {
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+/* Footer */
+footer {
+  background: #222;
+  color: #ccc;
+  padding: 2rem 5%;
+  text-align: center;
+}
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.social-icons img {
+  width: 28px;
+  margin: 0 10px;
+  transition: transform 0.3s;
+}
+.social-icons img:hover {
+  transform: scale(1.2);
+}
+
+/* Animations */
+@keyframes fadeInLeft {
+  from {opacity: 0; transform: translateX(-50px);}
+  to {opacity: 1; transform: translateX(0);}
+}
+@keyframes fadeInRight {
+  from {opacity: 0; transform: translateX(50px);}
+  to {opacity: 1; transform: translateX(0);}
+}
+
+    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SmartGadget Pro - Next-Gen Smart Device</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="logo">SmartGadget<span>Pro</span></div>
+    <input type="checkbox" id="menu-toggle" />
+    <label for="menu-toggle" class="hamburger"><span></span><span></span><span></span></label>
+    <ul class="nav-links">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="home" class="hero">
+    <div class="hero-content">
+      <h1>Welcome to <span>SmartGadget Pro</span></h1>
+      <p>Experience innovation, speed, and design — all in one smart device.</p>
+      <a href="#features" class="btn-primary">Discover More</a>
+    </div>
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1581091215367-59ab6c2df2d9?auto=format&fit=crop&w=800&q=80" alt="Smart Gadget">
+    </div>
+  </header>
+
+  <!-- Features -->
+  <section id="features" class="features-section">
+    <h2>Explore Our Top Features</h2>
+    <div class="features-grid">
+      <article class="feature-card">
+        <img src="https://images.unsplash.com/photo-1606813902911-5c2e19c0f1c0?auto=format&fit=crop&w=400&q=80" alt="Performance">
+        <h3>Blazing Fast Performance</h3>
+        <p>Powered by an AI-optimized processor for seamless multitasking and ultra-fast response times.</p>
+      </article>
+
+      <article class="feature-card">
+        <img src="https://images.unsplash.com/photo-1589561084283-930aa7b1c3c1?auto=format&fit=crop&w=400&q=80" alt="Battery">
+        <h3>All-Day Battery</h3>
+        <p>Stay unplugged for up to 30 hours — SmartGadget Pro adapts power efficiently to your needs.</p>
+      </article>
+
+      <article class="feature-card">
+        <img src="https://images.unsplash.com/photo-1612197527762-87cb9c9e3f46?auto=format&fit=crop&w=400&q=80" alt="Design">
+        <h3>Minimalist Design</h3>
+        <p>Built from aerospace-grade materials, SmartGadget Pro defines elegance and comfort in your hand.</p>
+      </article>
+
+      <article class="feature-card">
+        <img src="https://images.unsplash.com/photo-1587560699334-cc4ff634909a?auto=format&fit=crop&w=400&q=80" alt="Camera">
+        <h3>Smart Camera System</h3>
+        <p>Capture every detail with 108MP ultra-wide lens and AI-enhanced low-light performance.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="pricing-section">
+    <h2>Find Your Perfect Plan</h2>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Basic</h3>
+        <p class="price">$49.99</p>
+        <ul>
+          <li>Essential Features</li>
+          <li>1 Year Warranty</li>
+          <li>Standard Support</li>
+        </ul>
+        <a href="#contact" class="btn-secondary">Buy Now</a>
+      </div>
+
+      <div class="price-card featured">
+        <h3>Pro</h3>
+        <p class="price">$89.99</p>
+        <ul>
+          <li>All Smart Features</li>
+          <li>2 Years Warranty</li>
+          <li>Priority Support</li>
+        </ul>
+        <a href="#contact" class="btn-primary">Buy Now</a>
+      </div>
+
+      <div class="price-card">
+        <h3>Elite</h3>
+        <p class="price">$149.99</p>
+        <ul>
+          <li>Everything in Pro</li>
+          <li>Bonus Accessories</li>
+          <li>Lifetime Support</li>
+        </ul>
+        <a href="#contact" class="btn-secondary">Buy Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section id="reviews" class="reviews-section">
+    <h2>What Our Customers Say</h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer">
+        <p>“The design and speed are mind-blowing! SmartGadget Pro is worth every penny.”</p>
+        <h4>- Sarah Williams</h4>
+      </div>
+      <div class="review-card">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer">
+        <p>“Battery lasts forever and the display is gorgeous. Best device I’ve owned.”</p>
+        <h4>- James Lee</h4>
+      </div>
+      <div class="review-card">
+        <img src="https://randomuser.me/api/portraits/men/56.jpg" alt="Customer">
+        <p>“Customer support was fast and helpful. I’m a loyal SmartGadget fan now.”</p>
+        <h4>- Arjun Mehta</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact-section">
+    <h2>Get in Touch</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn-primary">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 SmartGadget Inc. All rights reserved.</p>
+      <div class="social-icons">
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111393.png" alt="Facebook"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Instagram"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733635.png" alt="Twitter"></a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
